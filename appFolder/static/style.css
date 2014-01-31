@@ -1,0 +1,15 @@
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+textarea {
+	border: none;
+	resize: none;
+	width: 100%;
+}
+
+body {
+	padding-bottom: 40%;
+}
+
+accordion {
+	margin: 50px;
+}

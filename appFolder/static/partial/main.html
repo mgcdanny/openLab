@@ -1,0 +1,70 @@
+
+<div class="container">
+	<div class="page-header">
+		<h1 class="text-center"> NYC Lab is Open </h1>
+	</div>
+</div>
+<br>
+
+<div class="container">
+	<tabset justified="true">
+			<tab ng-controller="mainCtrl" heading="Posts" ng-click="getProjects()">
+			<div style="border:1px solid; border-color:LightGray;">
+				<accordion ng-repeat="m in messages">
+					<accordion-group>
+						<accordion-heading>
+							<h3> 
+								{{m.tt}} 
+								<span ng-click="deleteMessage(m._id.$oid)" class="pull-right glyphicon glyphicon-trash">
+								</span> 
+							</h3>
+							<h4> -- {{m.ath}} </h4>
+						</accordion-heading> 
+						<textarea ng-model ="m.dsc"class="myTextarea"> {{m.dsc}} </textarea>
+						<div ng-repeat="cmt in m.res track by $index"> 
+							<div class="well"> 
+								<span ng-click="deleteComment(m._id.$oid, $index)" class="pull-right glyphicon glyphicon-trash">
+								</span> 
+								{{cmt.dsc}}
+								<br>
+								-- {{cmt.ath}}
+							</div>
+						</div>
+						<br>
+						<br>
+						<form ng-if="formVis" role="form">
+							<div class="form-group">
+								<input type="text" class="form-control" ng-model="comment.ath" placeholder="author">
+							</div>
+							<div class="form-group">
+								<textarea class="form-control" ng-model="comment.dsc" placeholder="Enter Text"></textarea>
+							</div>
+							<button class="btn btn-default btn-lg" ng-click="saveCmt(m._id.$oid, comment)"> Save Comment </button>
+						</form>
+						<br>
+						<button class="btn btn-default btn-lg" ng-click="formVis = !formVis"> Add Comment </button>
+					</accordion-group>
+				</accordion>
+			</div>
+			</tab>
+			<tab heading="Create New Post" ng-controller="newPostCtrl"> 
+			<br>
+			<h3> Create A New Post </h3>	
+			<form role="newPostForm">
+				<div class="form-group">
+					<input type="text" class="form-control" ng-model="post.tt" placeholder="Enter Title">
+				</div>
+				<div class="form-group">
+					<textarea class="form-control" ng-model="post.dsc" placeholder="Enter Text"></textarea>
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" ng-model="post.ath" placeholder="Enter Author">
+				</div>
+				<button class="btn btn-default btn-lg" ng-click="savePost(post)"> Submit </button>
+			</form>				
+				</div>
+			</tab>
+	</tabset>
+</div>
+
+
