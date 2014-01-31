@@ -1,6 +1,8 @@
 
 
 angular.module('angApp').controller('newPostCtrl', ['$scope', '$http', '$filter', function($scope, $http, $filter){
+	
+	$scope.post = {};
 
     $scope.savePost = function(post){
     	console.log(post)
