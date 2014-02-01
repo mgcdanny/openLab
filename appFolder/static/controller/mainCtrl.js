@@ -29,9 +29,9 @@ angular.module('angApp').controller('mainCtrl', ['$scope', '$http', '$filter', f
         // try to delete comment by its position in array
         console.log(index)
         $http.delete('/api/comment/'+id+'/'+index).success(function(res){
+            console.log(res)
             $scope.getProjects();
         })
     }
-
 }])
 

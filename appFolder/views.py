@@ -27,16 +27,18 @@ def message(id=None):
 		collection.remove({"_id": ObjectId(id)})
 		return "DELETE"
 
-@app.route('/api/comment/<id>/<text>', methods=['DELETE'])
+@app.route('/api/comment/<id>/<index>', methods=['DELETE'])
 @app.route('/api/comment/<id>', methods=['POST'])
-def comment(id=None, text=None):
+def comment(id=None, index=None):
 	if request.method == 'POST':
-		print(request.json)
 		collection.update({"_id": ObjectId(id)}, {"$push": {"res":request.json}})
 		return "POST"
-	else:
-		return "Server Error"
 	if request.method == 'DELETE':
-		print(text)
-		collection.update({"_id": ObjectId(id)}, {"$pull": {"res": {"dsc": text} }})
+		res = collection.find_one({'_id':ObjectId(id)}, {"res":1, "_id":0})
+		del res["res"][int(index)]
+		collection.update({'_id':ObjectId(id)},{"$set":{"res":res["res"]}})
 		return "DELETE"
+
+
+
+

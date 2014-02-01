@@ -9,7 +9,7 @@
 <div class="container">
 	<tabset justified="true">
 			<tab ng-controller="mainCtrl" heading="Posts" ng-click="getProjects()">
-			<div style="border:1px solid; border-color:LightGray;">
+			<div>
 				<accordion ng-repeat="m in messages">
 					<accordion-group>
 						<accordion-heading>
@@ -52,13 +52,13 @@
 			<h3> Create A New Post </h3>	
 			<form role="newPostForm">
 				<div class="form-group">
-					<input type="text" class="form-control" ng-model="post.tt" placeholder="Enter Title">
+					<input type="text" class="form-control" ng-model="post.tt" placeholder="Enter Title" required>
 				</div>
 				<div class="form-group">
-					<textarea class="form-control" ng-model="post.dsc" placeholder="Enter Text"></textarea>
+					<textarea class="form-control" ng-model="post.dsc" placeholder="Enter Text" required></textarea>
 				</div>
 				<div class="form-group">
-					<input type="text" class="form-control" ng-model="post.ath" placeholder="Enter Author">
+					<input type="text" class="form-control" ng-model="post.ath" placeholder="Enter Author" required>
 				</div>
 				<button class="btn btn-default btn-lg" ng-click="savePost(post)"> Submit </button>
 			</form>				
