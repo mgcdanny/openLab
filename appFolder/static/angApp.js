@@ -1,7 +1,6 @@
 
 var app = angular.module('angApp', ['ngResource', 'ngRoute','ui.bootstrap']);
 
-
 app.config(['$routeProvider', function($routeProvider){
 	$routeProvider.
         when('/', {
@@ -11,4 +10,5 @@ app.config(['$routeProvider', function($routeProvider){
             redirectTo: '/'
         });
 }]);
+
 
