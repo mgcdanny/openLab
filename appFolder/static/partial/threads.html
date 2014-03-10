@@ -1,16 +1,4 @@
-
 <div class="container">
-	<div class="text-center"class="page-header">
-		<h1> NYC Lab is Open </h1>
-		<h2> Friday Feb 21, 2014 from 1pm to 5pm </h2>
-		<h3> 1 Centre St Room 24-7 @ 24th Floor </h3>
-	</div>
-</div>
-<br>
-
-<div class="container">
-	<tabset justified="true">
-			<tab ng-controller="mainCtrl" heading="Posts" ng-click="getProjects()">
 			<div>
 				<accordion ng-repeat="m in messages">
 					<accordion-group>
@@ -48,25 +36,4 @@
 					</accordion-group>
 				</accordion>
 			</div>
-			</tab>
-			<tab heading="Create New Post" ng-controller="newPostCtrl"> 
-			<br>
-			<h3> Create A New Post </h3>	
-			<form role="newPostForm">
-				<div class="form-group">
-					<input type="text" class="form-control" ng-model="post.tt" placeholder="Enter Title" required>
-				</div>
-				<div class="form-group">
-					<textarea class="form-control" ng-model="post.dsc" placeholder="Enter Text" required></textarea>
-				</div>
-				<div class="form-group">
-					<input type="text" class="form-control" ng-model="post.ath" placeholder="Enter Author" required>
-				</div>
-				<button class="btn btn-default btn-lg" ng-click="savePost(post)"> Submit </button>
-			</form>				
-				</div>
-			</tab>
-	</tabset>
-</div>
-
-
+			</div>

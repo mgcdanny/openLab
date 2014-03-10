@@ -3,8 +3,6 @@ from appFolder import app
 from pymongo import MongoClient
 from bson import json_util, ObjectId
 
-
-
 client = MongoClient()
 db = client["openLab"]
 collection = db["prjc"]
@@ -33,7 +31,9 @@ def message(id=None):
 @app.route('/api/comment/<id>', methods=['POST'])
 def comment(id=None, index=None):
 	if request.method == 'POST':
-		collection.update({"_id": ObjectId(id)}, {"$push": {"res":request.json}})
+		req = request.json
+		req['id'] = ObjectId()
+		collection.update({"_id": ObjectId(id)}, {"$push": {"res":req}})
 		return "POST"
 	if request.method == 'DELETE':
 		res = collection.find_one({'_id':ObjectId(id)}, {"res":1, "_id":0})

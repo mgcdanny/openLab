@@ -1,6 +1,6 @@
 
 
-angular.module('angApp').controller('newPostCtrl', ['$scope', '$http', '$filter', function($scope, $http, $filter){
+angular.module('angApp').controller('newThreadCtrl', ['$scope', '$http', '$filter', function($scope, $http, $filter){
 	
 	$scope.post = {};
 

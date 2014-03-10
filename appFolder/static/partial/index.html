@@ -4,30 +4,53 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Open Lab</title>
-
 		<!-- Jquery -->
-   		<!-- // <script src="https://code.jquery.com/jquery.js"></script> -->
-		<!-- Bootstrap -->
 		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-<!--    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script> -->
+		<link rel='stylesheet prefetch' href='http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css'>
 		<!-- Angular Source Files -->
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.js"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular-animate.js"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular-resource.js"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular-route.js"></script>
-		<script src="static/ui-bootstrap-tpls-0.10.0.min.js"> </script>
-		<!-- // <script src="static/ng-google-chart.js"> </script> -->
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular-sanitize.js"></script>
 
-		
+		<!-- ui Bootstrap -->
+		<script src="static/ui-bootstrap-tpls-0.10.0.min.js"> </script>
+		<!-- textAngular -->
+		<script src='http://cdnjs.cloudflare.com/ajax/libs/textAngular/1.2.0/textAngular.min.js'></script>
+		<script src='http://rangy.googlecode.com/svn/trunk/currentrelease/rangy-core.js'></script>
+
 		<!-- My Angular Module, CSS -->
-		<link rel="stylesheet" type="text/css" href="static/style.css" />
+		<link rel="stylesheet" type="text/css" href="static/css/style.css" />
+		<link rel="stylesheet" type="text/css" href="static/css/Font-Awesome/css/font-awesome.min.css" />	
 		<script type="text/javascript" src="static/angApp.js"></script>
 		<script type="text/javascript" src="static/controller/mainCtrl.js"></script>
-		<script type="text/javascript" src="static/controller/newPostCtrl.js"></script>
-
+		<script type="text/javascript" src="static/controller/newThreadCtrl.js"></script>
+		<script type="text/javascript" src="static/controller/editorCtrl.js"></script>
 	</head>
-
 	<body>
+	
+	<div class="container">
+		<div class="text-center"class="page-header">
+			<h1> NYC Lab is Open </h1>
+			<h2> Friday Feb 21, 2014 from 1pm to 5pm </h2>
+			<h3> 1 Centre St Room 24-7 @ 24th Floor </h3>
+		</div>
+	</div>
+	<br>
+	<div class="container">
+		<ul class="nav nav-tabs">
+		  <li class="active"><a href="#/">Threads</a></li>
+		  <li><a href="#/newThread">Make New Thread</a></li>
+		  <li><a href="#/demo">Demos</a></li>
+		</ul>
+<!-- 		<tabset justified="true">
+			<tab ng-controller="mainCtrl" heading= <a href='www.google.com'> Stuff</a> ng-click="getProjects()">
+			</tab>
+			<tab heading="Create New Post" ng-controller="newPostCtrl">
+			</tab>
+		</tabset> -->		
+	</div> 
 	<div ng-view></div>
 	</body>
 </html>

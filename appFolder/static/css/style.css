@@ -1,0 +1,32 @@
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+textarea {
+	border: none;
+	resize: none;
+	width: 100%;
+}
+
+body {
+	padding-bottom: 40%;
+}
+
+accordion {
+	margin: 50px;
+}
+
+.ta-editor {
+  min-height: 300px;
+  height: auto;
+  overflow: auto;
+  font-family: inherit;
+  font-size: 100%;
+}
+
+.myTextarea {
+  min-height: 100px;
+  height: auto;
+  overflow: auto;
+  font-family: inherit;
+  font-size: 100%;
+  margin-bottom: 25px;
+}
