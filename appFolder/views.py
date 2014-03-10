@@ -37,6 +37,7 @@ def comment(id=None, index=None):
 		return "POST"
 	if request.method == 'DELETE':
 		res = collection.find_one({'_id':ObjectId(id)}, {"res":1, "_id":0})
+		#BAD Race Condition TODO: Fix
 		del res["res"][int(index)]
 		collection.update({'_id':ObjectId(id)},{"$set":{"res":res["res"]}})
 		return "DELETE"
