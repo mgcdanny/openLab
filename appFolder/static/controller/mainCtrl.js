@@ -1,37 +1,52 @@
 
-
 angular.module('angApp').controller('mainCtrl', ['$scope', '$http', '$filter', function($scope, $http, $filter){
-    $scope.messages = {};
+    
+    $scope.threads = {};
 
-    $scope.getProjects = function(){
-        $http.get('/api/message').success(function(res){
-            $scope.messages = res
-            console.log(res)
+    $scope.getThreads = function(){
+        $http.get('/api/thread').success(function(res){
+            $scope.threads = res
         })
     }
-     $scope.getProjects();
 
-     $scope.deleteMessage = function(id){
-     	$http.delete('/api/message/'+id).success(function(res){
-     		$scope.getProjects();
-     	})
+    $scope.getThreads();
+
+    $scope.editThread = function(threadId, data){
+        if(data["ath"]==="" && data["dsc"]==="" && data["tt"]===""){
+            $http.delete('/api/thread/'+threadId)
+                .success(function(res){
+                    $scope.getThreads();
+            })
+        }else{
+            $http.put('/api/thread/'+threadId, data)
+                .success(function(res){
+                    $scope.getThreads();
+                })
+        }
      }
 
-    $scope.saveCmt = function(id, data){
-    	console.log(data)
-        $http.post('/api/comment/'+id, data)
-        .success(function(res){
-        	$scope.getProjects();
-       	})
+    $scope.editCmt = function(threadId, cmtId, data){
+        if(data['ath'] === "" && data['dsc'] === ""){
+            $http.delete('/api/comment/'+threadId+'/'+cmtId)
+                .success(function(res){
+                    $scope.getThreads();
+            })
+        } else{
+            $http.put('/api/comment/'+threadId+'/'+cmtId, data)
+                .success(function(res){
+                    $scope.getThreads();
+            })
+        }
     }
 
-    $scope.deleteComment = function(id, index){
-        // try to delete comment by its position in array
-        console.log(index)
-        $http.delete('/api/comment/'+id+'/'+index).success(function(res){
-            console.log(res)
-            $scope.getProjects();
-        })
+
+
+    $scope.saveCmt = function(id, data){
+        if(!(data === undefined) ){
+            $http.post('/api/comment/'+id, data)
+                .success(function(res){
+                	$scope.getThreads();
+           	})
+        }
     }
 }])
-

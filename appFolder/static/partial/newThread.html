@@ -1,16 +1,20 @@
 
 <div class="container">
-	<h3> Create A New Post </h3>	
+	<h2> Create A New Post </h2>	
 	<form role="newPostForm">
 		<div class="form-group">
 			<input type="text" class="form-control" ng-model="post.tt" placeholder="Enter Title" required>
 		</div>
 		<div class="form-group">
-			<div text-angular ng-model="post.dsc"> Write till you drop</div>
+			<h2> Write Some Stuff </h2>
+			<div text-angular ng-model="post.dsc"></div>
 		</div>
 		<div class="form-group">
+			<h2>Author Name</h2>
 			<input type="text" class="form-control" ng-model="post.ath" placeholder="Enter Author" required>
 		</div>
-		<button class="btn btn-default btn-lg" ng-click="savePost(post)"> Submit </button>
+		<a href="/"> 
+			<button class="btn btn-default btn-lg" ng-click="saveThread(post)">Submit</button>
+		</a>
 	</form>				
 </div>

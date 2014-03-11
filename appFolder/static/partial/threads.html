@@ -1,39 +1,69 @@
 <div class="container">
-			<div>
-				<accordion ng-repeat="m in messages">
-					<accordion-group>
-						<accordion-heading>
-							<h3> 
-								{{m.tt}} 
-								<span ng-click="deleteMessage(m._id.$oid)" class="pull-right glyphicon glyphicon-trash">
-								</span> 
-							</h3>
-							<h4> -- {{m.ath}} </h4>
-						</accordion-heading> 
-						<textarea ng-model ="m.dsc"class="myTextarea"> {{m.dsc}} </textarea>
-						<div ng-repeat="cmt in m.res track by $index"> 
-							<div class="well"> 
-								<span ng-click="deleteComment(m._id.$oid, $index)" class="pull-right glyphicon glyphicon-trash">
-								</span> 
-								{{cmt.dsc}}
-								<br>
-								-- {{cmt.ath}}
-							</div>
-						</div>
+	<div>
+		<h3> Search Our Collective Intelligence </h3>
+		<input type="text" ng-model="searchText" class="form-control" placeholder="Free Text Search">
+	</div>
+	<div>
+		<accordion ng-repeat="m in threads | filter:searchText">
+			<accordion-group>
+				<accordion-heading>
+					<h3>{{m.tt}} 
+						<span class="pull-right glyphicon glyphicon-pencil" ng-click="threadEditBool = !threadEditBool"></span>
+					</h3>
+					<h4>--{{m.ath}}</h4>
+				</accordion-heading>
+				<div class="thread" ng-bind-html="m.dsc" ng-if="!threadEditBool"></div>
+				<form ng-if="threadEditBool" role="form">
+					<div class="form-group">
+						<input type="text" class="form-control" ng-model="m.tt" placeholder="Title">
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" ng-model="m.ath" placeholder="Author">
+					</div>
+					<div class="form-group">
+						<div text-angular ng-model="m.dsc"></div>
+					</div>
+					<button class="btn btn-default btn-lg" ng-click="editThread(m._id.$oid, m)"> Save Edit </button>
+				</form>
+				<br> 
+				<div ng-repeat="cmt in m.res track by $index"> 
+					<div class="well">  
+						<span class="pull-right glyphicon glyphicon-pencil" ng-click="cmtEditBool = !cmtEditBool">
+						</span>
+						<div class="comment" ng-bind-html="cmt.dsc"></div>
 						<br>
+						<div>--{{cmt.ath}}</div>
 						<br>
-						<form ng-if="formVis" role="form">
+						<form ng-if="cmtEditBool" role="form">
 							<div class="form-group">
-								<input type="text" class="form-control" ng-model="comment.ath" placeholder="author">
+								<input type="text" class="form-control" ng-model="cmt.ath" placeholder="author">
 							</div>
 							<div class="form-group">
-								<textarea class="form-control" ng-model="comment.dsc" placeholder="Enter Text"></textarea>
+								<div text-angular ng-model="cmt.dsc"></div>
 							</div>
-							<button class="btn btn-default btn-lg" ng-click="saveCmt(m._id.$oid, comment)"> Save Comment </button>
+							<button class="btn btn-default btn-lg" ng-click="editCmt(m._id.$oid, cmt.cmt_id.$oid, cmt)"> Save Edit </button>
 						</form>
 						<br>
-						<button class="btn btn-default btn-lg" ng-click="formVis = !formVis"> Add Comment </button>
-					</accordion-group>
-				</accordion>
-			</div>
-			</div>
+					</div>
+				</div>
+				<br>
+				<br>
+				<form ng-if="cmtNewBool" role="form">
+					<div class="form-group">
+						<input type="text" class="form-control" ng-model="comment.ath" placeholder="author">
+					</div>
+					<div class="form-group">
+						<div text-angular ng-model="comment.dsc"></div>
+					</div>
+					<button class="btn btn-default btn-lg" ng-click="saveCmt(m._id.$oid, comment)"> Save Comment </button>
+				</form>
+				<br>
+				<button class="btn btn-default btn-lg" ng-click="cmtNewBool = !cmtNewBool"> Add Comment </button>
+			</accordion-group>
+		</accordion>
+	</div>
+</div>
+
+
+
+

@@ -9,8 +9,8 @@ app.config(['$routeProvider', function($routeProvider){
         }).when('/newThread', {
         	templateUrl:'/static/partial/newThread.html',
             controller: 'newThreadCtrl'
-        }).when('/edit', {
-        	templateUrl:'/static/partial/editor.html',
+        }).when('/demo', {
+            templateUrl:'/static/partial/demo.html',
             controller: ''
         }).when('/edit', {
         	templateUrl:'/static/partial/editor.html',
@@ -19,5 +19,3 @@ app.config(['$routeProvider', function($routeProvider){
             redirectTo: '/'
         });
 }]);
-
-

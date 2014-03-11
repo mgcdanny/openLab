@@ -22,8 +22,9 @@ accordion {
   font-size: 100%;
 }
 
-.myTextarea {
+.thread {
   min-height: 100px;
+  max-height: 600px;
   height: auto;
   overflow: auto;
   font-family: inherit;
