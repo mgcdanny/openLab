@@ -22,7 +22,7 @@ def thread(thread_id=None):
 		return "Thread API POST"
 	if request.method == 'PUT':
 		req = request.json
-		collection.update({"_id": ObjectId(thread_id)}, {"ath":req['ath'],"dsc":req['dsc'], "tt":req["tt"]})
+		collection.update({"_id": ObjectId(thread_id)}, {"$set": {"ath":req['ath'],"dsc":req['dsc'], "tt":req["tt"]}})
 		return "Thread API PUT"	
 	if request.method == 'DELETE':
 		collection.remove({"_id": ObjectId(thread_id)})
@@ -33,7 +33,6 @@ def thread(thread_id=None):
 def comment(thread_id=None, cmt_id=None):
 	if request.method == 'POST':
 		req = request.json
-		print(req)
 		req['cmt_id'] = ObjectId()
 		collection.update({"_id": ObjectId(thread_id)}, {"$push": {"res":req}})
 		return "Comment API POST"

@@ -8,7 +8,7 @@
 			<accordion-group>
 				<accordion-heading>
 					<h3>{{m.tt}} 
-						<span class="pull-right glyphicon glyphicon-pencil" ng-click="threadEditBool = !threadEditBool"></span>
+						<span class="pull-right glyphicon glyphicon-pencil ng-class:{red: threadEditBool}" ng-click="threadEditBool = !threadEditBool"></span>
 					</h3>
 					<h4>--{{m.ath}}</h4>
 				</accordion-heading>
@@ -28,7 +28,7 @@
 				<br> 
 				<div ng-repeat="cmt in m.res track by $index"> 
 					<div class="well">  
-						<span class="pull-right glyphicon glyphicon-pencil" ng-click="cmtEditBool = !cmtEditBool">
+						<span class="pull-right glyphicon glyphicon-pencil ng-class:{red: cmtEditBool}" ng-click="cmtEditBool = !cmtEditBool">
 						</span>
 						<div class="comment" ng-bind-html="cmt.dsc"></div>
 						<br>
