@@ -12,7 +12,10 @@ angular.module('angApp').controller('mainCtrl', ['$scope', '$http', '$filter', f
     $scope.getThreads();
 
     $scope.editThread = function(threadId, data){
-        if(data["ath"]==="" && data["dsc"]==="" && data["tt"]===""){
+       if(data['ath'] === undefined){data['ath'] = ""}
+       if(data['dsc'] === undefined){data['dsc'] = ""}
+       if(data['tt'] === undefined){data['tt'] = ""}
+       if(data["ath"]==="" && data["dsc"]==="" && data["tt"]===""){
             $http.delete('/api/thread/'+threadId)
                 .success(function(res){
                     $scope.getThreads();
@@ -26,6 +29,9 @@ angular.module('angApp').controller('mainCtrl', ['$scope', '$http', '$filter', f
      }
 
     $scope.editCmt = function(threadId, cmtId, data){
+       console.log(data)
+        if(data['ath'] === undefined){data['ath'] = ""}
+        if(data['dsc'] === undefined){data['dsc'] = ""}
         if(data['ath'] === "" && data['dsc'] === ""){
             $http.delete('/api/comment/'+threadId+'/'+cmtId)
                 .success(function(res){
